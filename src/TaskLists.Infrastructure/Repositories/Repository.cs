@@ -18,11 +18,17 @@ public class Repository<TEntity>(
     public async Task<TEntity?> GetByIdAsync(
         Guid id,
         CancellationToken cancellationToken = default,
+        bool asNoTracking = false,
         params Expression<Func<TEntity, object>>[] includes)
     {
         IQueryable<TEntity> query = Set;
 
         query = ApplyIncludes(query, includes);
+
+        if (asNoTracking)
+        {
+            query = query.AsNoTracking();
+        }
 
         return await query.SingleOrDefaultAsync(
             x => x.Id == id,

@@ -9,6 +9,7 @@ public interface IRepository<TEntity>
     Task<TEntity?> GetByIdAsync(
         Guid id,
         CancellationToken cancellationToken = default,
+        bool asNoTracking = false,
         params Expression<Func<TEntity, object>>[] includes);
 
     Task<IReadOnlyList<TEntity>> GetAllAsync(

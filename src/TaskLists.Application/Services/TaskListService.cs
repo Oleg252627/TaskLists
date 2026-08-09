@@ -40,6 +40,7 @@ public sealed class TaskListService(
         var taskList = await taskListRepository.GetByIdAsync(
             id,
             cancellationToken,
+            asNoTracking: true,
             x => x.Shares);
 
         if (taskList is null)
@@ -83,6 +84,7 @@ public sealed class TaskListService(
         var taskList = await taskListRepository.GetByIdAsync(
             id,
             cancellationToken,
+            asNoTracking: true,
             x => x.Shares);
 
         if (taskList is null)
@@ -108,6 +110,7 @@ public sealed class TaskListService(
         var taskList = await taskListRepository.GetByIdAsync(
             dto.Id,
             cancellationToken,
+            asNoTracking: false,
             x => x.Shares);
 
         if (taskList is null)

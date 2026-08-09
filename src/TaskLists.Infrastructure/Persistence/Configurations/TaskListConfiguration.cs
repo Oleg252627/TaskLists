@@ -32,5 +32,12 @@ public sealed class TaskListConfiguration
         builder.HasIndex(x => x.OwnerId);
 
         builder.HasIndex(x => x.CreatedAtUtc);
+
+        builder.HasIndex(x => new
+        {
+            x.OwnerId,
+            x.CreatedAtUtc,
+            x.Id
+        });
     }
 }

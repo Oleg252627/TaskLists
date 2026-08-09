@@ -79,6 +79,7 @@ public sealed class TaskListServiceTests
             .Setup(x => x.GetByIdAsync(
                 It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>(),
+                It.IsAny<bool>(),
                 It.IsAny<Expression<Func<TaskList, object>>[]>()))
             .ReturnsAsync((TaskList?)null);
 
@@ -102,6 +103,7 @@ public sealed class TaskListServiceTests
             .Setup(x => x.GetByIdAsync(
                 taskList.Id,
                 It.IsAny<CancellationToken>(),
+                It.IsAny<bool>(),
                 It.IsAny<Expression<Func<TaskList, object>>[]>()))
             .ReturnsAsync(taskList);
 
@@ -126,6 +128,7 @@ public sealed class TaskListServiceTests
             .Setup(x => x.GetByIdAsync(
                 taskList.Id,
                 It.IsAny<CancellationToken>(),
+                It.IsAny<bool>(),
                 It.IsAny<Expression<Func<TaskList, object>>[]>()))
             .ReturnsAsync(taskList);
 
@@ -158,6 +161,7 @@ public sealed class TaskListServiceTests
             .Setup(x => x.GetByIdAsync(
                 taskList.Id,
                 It.IsAny<CancellationToken>(),
+                It.IsAny<bool>(),
                 It.IsAny<Expression<Func<TaskList, object>>[]>()))
             .ReturnsAsync(taskList);
 
@@ -183,6 +187,7 @@ public sealed class TaskListServiceTests
             .Setup(x => x.GetByIdAsync(
                 taskList.Id,
                 It.IsAny<CancellationToken>(),
+                It.IsAny<bool>(),
                 It.IsAny<Expression<Func<TaskList, object>>[]>()))
             .ReturnsAsync(taskList);
 
@@ -206,6 +211,7 @@ public sealed class TaskListServiceTests
             .Setup(x => x.GetByIdAsync(
                 taskList.Id,
                 It.IsAny<CancellationToken>(),
+                It.IsAny<bool>(),
                 It.IsAny<Expression<Func<TaskList, object>>[]>()))
             .ReturnsAsync(taskList);
 

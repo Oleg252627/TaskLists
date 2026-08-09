@@ -23,6 +23,10 @@ public class TaskListShareConfiguration : IEntityTypeConfiguration<TaskListShare
         builder.Property(x => x.CreatedAtUtc)
             .IsRequired();
 
-        builder.HasIndex(x => x.UserId);
+        builder.HasIndex(x => new
+        {
+            x.UserId,
+            x.TaskListId
+        });
     }
 }
