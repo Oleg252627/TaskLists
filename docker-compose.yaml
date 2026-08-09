@@ -1,0 +1,35 @@
+﻿services:
+  postgres:
+    image: postgres:18
+    container_name: tasklists-postgres
+    environment:
+      POSTGRES_DB: TaskLists
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - tasklists-postgres-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d TaskLists"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  tasklists.api:
+    image: tasklists.api
+    build:
+      context: .
+      dockerfile: src/TaskLists.Api/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_HTTP_PORTS: 8080
+      ConnectionStrings__Database: Host=postgres;Port=5432;Database=TaskLists;Username=postgres;Password=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  tasklists-postgres-data:
