@@ -37,9 +37,15 @@ public class Repository<TEntity>(
 
     public async Task<IReadOnlyList<TEntity>> GetAllAsync(
         CancellationToken cancellationToken = default,
+        Expression<Func<TEntity, bool>>? predicate = null,
         params Expression<Func<TEntity, object>>[] includes)
     {
         IQueryable<TEntity> query = Set;
+        
+        if (predicate is not null)
+        {
+            query = query.Where(predicate);
+        }
 
         query = ApplyIncludes(query, includes);
 

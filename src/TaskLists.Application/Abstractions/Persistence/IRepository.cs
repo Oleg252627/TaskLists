@@ -14,6 +14,7 @@ public interface IRepository<TEntity>
 
     Task<IReadOnlyList<TEntity>> GetAllAsync(
         CancellationToken cancellationToken = default,
+        Expression<Func<TEntity, bool>>? predicate = null,
         params Expression<Func<TEntity, object>>[] includes);
 
     Task AddAsync(
