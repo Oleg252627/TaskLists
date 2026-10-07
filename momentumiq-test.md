@@ -1,1 +1,1 @@
-MomentumIQ pull request CI test.
+Test GitHub issue #3 integration with MomentumIQ.
