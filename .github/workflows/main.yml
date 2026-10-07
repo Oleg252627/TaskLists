@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Successful check
-        run: echo "MomentumIQ CI integration test passed"
+        run: exit 1
