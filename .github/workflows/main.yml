@@ -1,0 +1,17 @@
+name: MomentumIQ CI integration test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integration-check:
+    name: MomentumIQ integration check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Successful check
+        run: echo "MomentumIQ CI integration test passed"
